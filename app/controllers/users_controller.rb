@@ -38,6 +38,13 @@ class UsersController < ApplicationController
     @followers = @user.followers.page(params[:page])
     counts(@user)
   end
+  
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.like_microposts.page(params[:page])
+    #@microposts = @likes.microposts.order('created_at DESC').page(params[:page])
+    counts(@user)
+  end
 
   private
 
